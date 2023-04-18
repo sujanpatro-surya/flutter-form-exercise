@@ -94,4 +94,5 @@ flutter:
   fonts:
     - family: Inter
       fonts:
-        - asset: fonts/Inter-VariableFont_slnt,wght.ttf
+        # This is a variable ttf file that supports different slants and weights of the font.
+        - asset: fonts/Inter.ttf
