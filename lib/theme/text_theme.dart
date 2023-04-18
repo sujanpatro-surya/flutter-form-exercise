@@ -2,30 +2,41 @@ import 'package:flutter/material.dart';
 
 TextTheme textTheme() {
   return const TextTheme(
-    bodyLarge: TextStyle(       // body text 1
+    // body text 1
+    bodyLarge: TextStyle(
       fontSize: 16,
       letterSpacing: 0.2,
     ),
-    bodyMedium: TextStyle(      // body text 2
+
+    // body text 2
+    bodyMedium: TextStyle(
       fontSize: 14,
       letterSpacing: 0.22
     ),
-    labelLarge: TextStyle(      // button text 2
+
+    // button text 2
+    labelLarge: TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 14,
       letterSpacing: 0.32
     ),
-    labelMedium: TextStyle(     // button text 3
+
+    // button text 3
+    labelMedium: TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 12,
       letterSpacing: 0.35
     ),
-    headlineSmall: TextStyle(   // small text s1
+
+    // small text s1
+    headlineSmall: TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 16,
       letterSpacing: 0.2,
     ),
-    bodySmall: TextStyle(         // caption text c1
+
+    // caption text c1
+    bodySmall: TextStyle(
       fontSize: 12,
       letterSpacing: 0.3,
     )
