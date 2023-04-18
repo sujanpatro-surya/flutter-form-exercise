@@ -7,5 +7,5 @@ ThemeData mainTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   colorSchemeSeed: AllAppColors.primaryLight,
   fontFamily: 'Inter',
-  textTheme: textTheme()
+  textTheme: textTheme
 );
