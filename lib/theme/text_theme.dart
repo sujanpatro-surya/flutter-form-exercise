@@ -23,7 +23,11 @@ TextTheme textTheme() {
     headlineSmall: TextStyle(   // small text s1
       fontWeight: FontWeight.bold,
       fontSize: 16,
-      letterSpacing: 0.2
+      letterSpacing: 0.2,
+    ),
+    bodySmall: TextStyle(         // caption text c1
+      fontSize: 12,
+      letterSpacing: 0.3,
     )
   );
 }
