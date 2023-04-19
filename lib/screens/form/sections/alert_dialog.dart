@@ -46,6 +46,10 @@ AlertDialog alertDialogBox(BuildContext context) {
 }
 
 ButtonStyle _dialogButtonStyle = ElevatedButton.styleFrom(
+  padding: const EdgeInsets.symmetric(
+    vertical: AppPaddings.medium,
+    horizontal: AppPaddings.large
+  ),
   elevation: _dialogButtonElevation,
   backgroundColor: Colors.white,
   shape: RoundedRectangleBorder(
