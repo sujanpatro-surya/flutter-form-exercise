@@ -20,7 +20,7 @@ AlertDialog alertDialogBox(BuildContext context) {
     contentTextStyle: theme.textTheme.bodyMedium,
     actions: [
       const Divider(
-        color: AllAppColors.outlineLight,
+        color: AllAppColors.divider,
         height: dividerHeight
       ),
       Padding(
@@ -50,7 +50,7 @@ ButtonStyle _dialogButtonStyle = ElevatedButton.styleFrom(
   backgroundColor: Colors.white,
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(_dialogButtonBorderRadius),
-    side: const BorderSide(color: AllAppColors.outlineLight)
+    side: const BorderSide(color: AllAppColors.outline)
   )
 );
 

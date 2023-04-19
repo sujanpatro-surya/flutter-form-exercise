@@ -6,5 +6,5 @@ import 'colors.dart';
 AppBarTheme appBarTheme = AppBarTheme(
   backgroundColor: Colors.white,
   elevation: 0,
-  titleTextStyle: textTheme.headlineSmall!.copyWith(color: AllAppColors.primaryLight)
+  titleTextStyle: textTheme.headlineSmall!.copyWith(color: AllAppColors.primary)
 );
