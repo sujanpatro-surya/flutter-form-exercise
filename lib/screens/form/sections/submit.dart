@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_exercise/screens/form/common_values.dart';
 import 'package:flutter_form_exercise/theme/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../user_opinion.dart';
+import '../../common_util.dart';
 import 'alert_dialog.dart';
 
 class SubmitButton extends StatelessWidget {
@@ -35,24 +37,26 @@ class SubmitButton extends StatelessWidget {
     );
   }
 
-  Size getButtonSize(BuildContext context) {
-    if (MediaQuery.of(context).orientation == Orientation.landscape) {
-      return const Size(0, 0);
-    }
-    else {
-      return const Size(double.infinity, 0);
-    }
-  }
-
   void _submitForm(BuildContext context) {
+    UserOpinion userOpinion = _getUserOpinionInstance();
     showDialog<bool>(
       context: context,
       builder: (context) => alertDialogBox(context)
     ).then((action) {
       if (action!) {
-        // TODO: Navigate to form response page, with form field values as argument
+        Navigator.pushNamed(context, '/formResponse', arguments: userOpinion);
       }
     });
     resetFormState();
   }
+}
+
+UserOpinion _getUserOpinionInstance() {
+  return UserOpinion(
+    FormFieldValues.name!,
+    FormFieldValues.dateController.text,
+    FormFieldValues.gender,
+    FormFieldValues.originCountry,
+    FormFieldValues.opinion
+  );
 }

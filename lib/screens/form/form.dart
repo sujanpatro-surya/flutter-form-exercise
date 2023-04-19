@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_exercise/screens/common_util.dart';
 import 'package:flutter_form_exercise/screens/form/sections/birth_date.dart';
 import 'package:flutter_form_exercise/screens/form/sections/gender.dart';
 import 'package:flutter_form_exercise/screens/form/sections/opinion.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_form_exercise/screens/form/sections/name.dart';
 class FormPage extends StatefulWidget {
   const FormPage({Key? key}) : super(key: key);
   static late double submitButtonWidth;
+  static const double _appBarTitleBottomPadding = 12;
 
   @override
   State<FormPage> createState() => _FormPageState();
@@ -20,18 +22,30 @@ class FormPage extends StatefulWidget {
 class _FormPageState extends State<FormPage> {
   @override
   Widget build(BuildContext context) {
-    AppLocalizations appLocalizations = AppLocalizations.of(context)!;
+    final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
+    late final Widget appBarText;
     late final List<Widget> formElementsOrder;
-    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+    Orientation orientation = MediaQuery.of(context).orientation;
+    if (orientation == Orientation.portrait) {
       formElementsOrder = getWidgetListInPortraitOrder();
+      appBarText = Text(appLocalizations.appBarTitle);
     }
     else {
       formElementsOrder = getWidgetListInLandscapeOrder();
+      appBarText = Padding(padding: const EdgeInsets.fromLTRB(
+          AppPaddings.large,
+          AppPaddings.large,
+          AppPaddings.large,
+          FormPage._appBarTitleBottomPadding,
+        ),
+        child: Text(appLocalizations.appBarTitle),
+      );
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(appLocalizations.appBarTitle),
+      appBar: buildAppBar(
+        context: context,
+        title: appBarText
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(
