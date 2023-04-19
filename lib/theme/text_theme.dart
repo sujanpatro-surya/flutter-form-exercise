@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import 'colors.dart';
 
+/// The referenced design (Figma) is based on the Unity Style Typography. But
+/// the one we are supposed to follow is Material Design Typography. Each [TextStyle]
+/// defined below corresponds to the matching text style defined in Unity.
 const TextTheme textTheme = TextTheme(
-  // body text 1
+  /// Body/B1
   bodyLarge: TextStyle(
     color: AllAppColors.labelText,
     fontSize: 16,
     letterSpacing: 0.2,
   ),
 
-  // body text 2
+  /// Body/B2
   bodyMedium: TextStyle(
     color: AllAppColors.labelText,
     fontSize: 14,
     letterSpacing: 0.22
   ),
 
-  // button text 2
+  /// Button/BT2
   labelLarge: TextStyle(
     color: AllAppColors.labelText,
     fontWeight: FontWeight.bold,
@@ -24,7 +27,7 @@ const TextTheme textTheme = TextTheme(
     letterSpacing: 0.32
   ),
 
-  // button text 3
+  /// Button/BT3
   labelMedium: TextStyle(
     color: AllAppColors.labelText,
     fontWeight: FontWeight.bold,
@@ -32,7 +35,7 @@ const TextTheme textTheme = TextTheme(
     letterSpacing: 0.35
   ),
 
-  // small text s1
+  /// Small/S1
   headlineSmall: TextStyle(
     color: AllAppColors.labelText,
     fontWeight: FontWeight.bold,
@@ -40,7 +43,7 @@ const TextTheme textTheme = TextTheme(
     letterSpacing: 0.2,
   ),
 
-  // caption text c1
+  /// Caption/C1
   bodySmall: TextStyle(
     color: AllAppColors.labelText,
     fontSize: 12,
