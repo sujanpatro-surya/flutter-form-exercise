@@ -14,7 +14,7 @@ class GenerateRoute {
 
       case ('/formResponse') : {
         return MaterialPageRoute(
-          builder: (context) => FormResponse(),
+          builder: (context) => const FormResponse(),
           settings: settings
         );
       }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_exercise/screens/form/common_values.dart';
+import 'package:flutter_form_exercise/theme/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../user_opinion.dart';
@@ -7,20 +8,16 @@ import '../common_util.dart';
 
 class FormResponse extends StatelessWidget {
   const FormResponse({Key? key}) : super(key: key);
-  static const double _submitButtonLandscapeWidth = 99;
-  static late double _submitButtonWidth;
+  static const double _buttonElevation = 0;
+  static const double _buttonBorderRadius = 10;
+  static const double _buttonTextVerticalPadding = 10;
+  static const double _buttonTextHorizontalPadding = 20;
 
   @override
   Widget build(BuildContext context) {
     final UserOpinion userOpinion = ModalRoute.of(context)!.settings.arguments as UserOpinion;
     final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
-    
-    if (MediaQuery.of(context).orientation == Orientation.portrait){
-      _submitButtonWidth = double.infinity;
-    }
-    // else {
-    //   _submitButtonWidth = _submitButtonLandscapeWidth;
-    // }
+    final ThemeData theme = Theme.of(context);
 
     return Scaffold(
       appBar: buildAppBar(
@@ -46,7 +43,7 @@ class FormResponse extends StatelessWidget {
                   runAlignment: WrapAlignment.start,
                   alignment: WrapAlignment.center,
                   runSpacing: AppPaddings.large,
-                  children: responseFields(appLocalizations, userOpinion),
+                  children: responseFields(appLocalizations, userOpinion, theme.textTheme),
                 ),
               ),
             ),
@@ -54,16 +51,16 @@ class FormResponse extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(AppPaddings.xlarge, AppPaddings.large, AppPaddings.xlarge, AppPaddings.large),
             child: ElevatedButton(
-              style: ButtonStyle(
-                elevation: MaterialStateProperty.all<double>(0),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)
-                  )
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(
+                  vertical: _buttonTextVerticalPadding,
+                  horizontal: _buttonTextHorizontalPadding
                 ),
-                fixedSize: MaterialStateProperty.all(
-                  Size(_submitButtonWidth, 40)
+                elevation: _buttonElevation,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(_buttonBorderRadius)
                 ),
+                minimumSize: getButtonSize(context)
               ),
               onPressed: () => Navigator.pop(context),
               child: Text(appLocalizations.goBackButtonText)
@@ -74,61 +71,68 @@ class FormResponse extends StatelessWidget {
     );
   }
 
-  List<Widget> responseFields(AppLocalizations appLocalizations, UserOpinion userOpinion) {
-    return [
+  List<Widget> responseFields(AppLocalizations appLocalizations, UserOpinion userOpinion, TextTheme theme) {
+    final List<List<String?>> responses = [
+      [appLocalizations.nameQuestion, userOpinion.name],
+      [appLocalizations.birthDateQuestion, userOpinion.birthDate],
+      [appLocalizations.genderQuestion, userOpinion.gender],
+      [appLocalizations.originCountryQuestion, userOpinion.originCountry],
+      [appLocalizations.opinionQuestion, userOpinion.opinion]
+    ];
+    return responses.map((field) {
+      return buildSection(field.first!, field.last, theme);
+    }).toList();
+    /*return [
       buildSection(
         appLocalizations.nameQuestion,
-        userOpinion.name
+        userOpinion.name,
+        theme
       ),
       buildSection(
         appLocalizations.birthDateQuestion,
-        userOpinion.birthDate
+        userOpinion.birthDate,
+        theme
       ),
       buildSection(
         appLocalizations.genderQuestion,
-        userOpinion.gender
+        userOpinion.gender,
+        theme
       ),
       buildSection(
         appLocalizations.originCountryQuestion,
-        userOpinion.originCountry
+        userOpinion.originCountry,
+        theme
       ),
       buildSection(
         appLocalizations.opinionQuestion,
-        userOpinion.opinion
+        userOpinion.opinion,
+        theme
       ),
-    ];
+    ];*/
   }
 }
 
-Column buildSection(String field, String? value) {
+Column buildSection(String field, String? value, TextTheme theme) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       SizedBox(
         width: double.infinity,
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 2),
+          padding: const EdgeInsets.only(bottom: AppPaddings.xsmall),
           child: Text(
             field,
-            style: const TextStyle(
-              fontSize: 14,
-              letterSpacing: 0.22,
-              // color: Color(0xFF8A8A8E)
-            ),
+            style: theme.bodyMedium!.copyWith(color: AllAppColors.hint),
           ),
         ),
       ),
       SizedBox(
         width: double.infinity,
         child: Padding(
-          padding: const EdgeInsets.only(top: 2),
+          padding: const EdgeInsets.only(top: AppPaddings.xsmall),
           child: Text(
             value ?? '',
-            style: const TextStyle(
-              fontSize: 16,
-              letterSpacing: 0.2,
-              // color: Color(0xFF36383A)
-            )
+            style: theme.bodyLarge
           )
         ),
       ),

@@ -47,3 +47,11 @@ PreferredSizeWidget customAppBar(Text title) {
 
 const double _appBarTitleBottomPadding = 12;
 
+Size getButtonSize(BuildContext context) {
+  if (MediaQuery.of(context).orientation == Orientation.landscape) {
+    return const Size(0, 0);
+  }
+  else {
+    return const Size(double.infinity, 0);
+  }
+}
