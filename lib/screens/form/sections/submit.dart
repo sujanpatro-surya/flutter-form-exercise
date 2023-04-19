@@ -4,7 +4,7 @@ import 'package:flutter_form_exercise/theme/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'alert_dialog.dart';
 
-class SubmitButton extends StatefulWidget {
+class SubmitButton extends StatelessWidget {
   const SubmitButton({Key? key, required this.resetFormState}) : super(key: key);
   final ValueGetter<void> resetFormState;
 
@@ -14,11 +14,6 @@ class SubmitButton extends StatefulWidget {
   static const double _buttonTextHorizontalPadding = 35.5;
   
   @override
-  State<SubmitButton> createState() => _SubmitButtonState();
-}
-
-class _SubmitButtonState extends State<SubmitButton> {
-  @override
   Widget build(BuildContext context) {
     final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     return ElevatedButton(
@@ -26,16 +21,16 @@ class _SubmitButtonState extends State<SubmitButton> {
         disabledBackgroundColor: AllAppColors.disabled,
         disabledForegroundColor: AllAppColors.hint,
         padding: const EdgeInsets.symmetric(
-          vertical: SubmitButton._buttonTextVerticalPadding,
-          horizontal: SubmitButton._buttonTextHorizontalPadding
+          vertical: _buttonTextVerticalPadding,
+          horizontal: _buttonTextHorizontalPadding
         ),
-        elevation: SubmitButton._buttonElevation,
+        elevation: _buttonElevation,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(SubmitButton._buttonBorderRadius)
+          borderRadius: BorderRadius.circular(_buttonBorderRadius)
         ),
         minimumSize: getButtonSize(context)
       ),
-      onPressed: FormFieldValues.isSubmitAllowed ? _submitForm : null,
+      onPressed: FormFieldValues.isSubmitAllowed ? () => _submitForm(context) : null,
       child: Text(appLocalizations.submitButtonText)
     );
   }
@@ -49,7 +44,7 @@ class _SubmitButtonState extends State<SubmitButton> {
     }
   }
 
-  void _submitForm() {
+  void _submitForm(BuildContext context) {
     showDialog<bool>(
       context: context,
       builder: (context) => alertDialogBox(context)
@@ -58,6 +53,6 @@ class _SubmitButtonState extends State<SubmitButton> {
         // TODO: Navigate to form response page, with form field values as argument
       }
     });
-    widget.resetFormState();
+    resetFormState();
   }
 }
