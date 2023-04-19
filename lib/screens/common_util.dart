@@ -3,7 +3,7 @@ import 'package:flutter_form_exercise/screens/form/common_values.dart';
 
 PreferredSizeWidget buildAppBar({
   required BuildContext context,
-  required Text title,
+  required Widget title,
   bool isResponsePage = false
 }) {
   if (MediaQuery.of(context).orientation == Orientation.landscape) {
@@ -17,9 +17,9 @@ PreferredSizeWidget buildAppBar({
   }
 }
 
-PreferredSizeWidget customAppBar(Text title) {
+PreferredSizeWidget customAppBar(Widget title) {
   return PreferredSize(
-    preferredSize: const Size(double.infinity, 56),
+    preferredSize: const Size.fromHeight(_appBarHeight),
     child: Padding(
       padding: const EdgeInsets.fromLTRB(
         AppPaddings.xlarge,
@@ -28,30 +28,26 @@ PreferredSizeWidget customAppBar(Text title) {
         AppPaddings.large,
       ),
       child: AppBar(
+        titleSpacing: _appBarTitleSpacing,
         primary: false,
-        title: Padding(
-          padding: const EdgeInsets.fromLTRB(
-            AppPaddings.large,
-            AppPaddings.large,
-            AppPaddings.large,
-            _appBarTitleBottomPadding,
-          ),
-          child: title
-        ),
+        title: title,
         automaticallyImplyLeading: false,
-        elevation: 0
+        elevation: _appBarElevation
       ),
     )
   );
 }
 
-const double _appBarTitleBottomPadding = 12;
-
 Size getButtonSize(BuildContext context) {
   if (MediaQuery.of(context).orientation == Orientation.landscape) {
-    return const Size(0, 0);
+    return const Size(_defaultButtonSize, _defaultButtonSize);
   }
   else {
-    return const Size(double.infinity, 0);
+    return const Size(double.infinity, _defaultButtonSize);
   }
 }
+
+const double _appBarHeight = 56;
+const double _appBarTitleSpacing = 0;
+const double _appBarElevation = 0;
+const double _defaultButtonSize = 0;

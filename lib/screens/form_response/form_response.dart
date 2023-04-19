@@ -24,7 +24,7 @@ class FormResponse extends StatelessWidget {
         context: context,
         title: Text(
           appLocalizations.yourResponse,
-          // style: const TextStyle(color: Color(0xFF36383A))
+          style: theme.textTheme.headlineSmall,
         )
       ),
       body: Column(
