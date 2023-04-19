@@ -5,7 +5,7 @@ import 'text_theme.dart';
 ThemeData mainTheme = ThemeData(
   brightness: Brightness.light,
   scaffoldBackgroundColor: Colors.white,
-  colorSchemeSeed: AllAppColors.primaryLight,
+  colorSchemeSeed: AllAppColors.primary,
   fontFamily: 'Inter',
   textTheme: textTheme
 );

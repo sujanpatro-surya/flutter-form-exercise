@@ -4,21 +4,21 @@ import 'colors.dart';
 const TextTheme textTheme = TextTheme(
   // body text 1
   bodyLarge: TextStyle(
-    color: AllAppColors.labelLight,
+    color: AllAppColors.labelText,
     fontSize: 16,
     letterSpacing: 0.2,
   ),
 
   // body text 2
   bodyMedium: TextStyle(
-    color: AllAppColors.labelLight,
+    color: AllAppColors.labelText,
     fontSize: 14,
     letterSpacing: 0.22
   ),
 
   // button text 2
   labelLarge: TextStyle(
-    color: AllAppColors.labelLight,
+    color: AllAppColors.labelText,
     fontWeight: FontWeight.bold,
     fontSize: 14,
     letterSpacing: 0.32
@@ -26,7 +26,7 @@ const TextTheme textTheme = TextTheme(
 
   // button text 3
   labelMedium: TextStyle(
-    color: AllAppColors.labelLight,
+    color: AllAppColors.labelText,
     fontWeight: FontWeight.bold,
     fontSize: 12,
     letterSpacing: 0.35
@@ -34,7 +34,7 @@ const TextTheme textTheme = TextTheme(
 
   // small text s1
   headlineSmall: TextStyle(
-    color: AllAppColors.labelLight,
+    color: AllAppColors.labelText,
     fontWeight: FontWeight.bold,
     fontSize: 16,
     letterSpacing: 0.2,
@@ -42,7 +42,7 @@ const TextTheme textTheme = TextTheme(
 
   // caption text c1
   bodySmall: TextStyle(
-    color: AllAppColors.labelLight,
+    color: AllAppColors.labelText,
     fontSize: 12,
     letterSpacing: 0.3,
   )
