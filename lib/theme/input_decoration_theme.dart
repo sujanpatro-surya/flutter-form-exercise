@@ -28,4 +28,4 @@ const double _inputVerticalPadding = 12;
 const double _inputHorizontalPadding = 14;
 const Color _errorColor = AllAppColors.error;
 const Color _inputOutlineColor = AllAppColors.outline;
-const Color _hintColor = AllAppColors.labelHint;
+const Color _hintColor = AllAppColors.hint;

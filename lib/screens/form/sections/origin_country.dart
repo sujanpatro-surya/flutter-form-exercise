@@ -34,7 +34,7 @@ class _OriginCountryDropDownState extends State<OriginCountryDropDown> {
           Padding(
             padding: const EdgeInsets.only(top: AppPaddings.small),
             child: DropdownButtonFormField(
-              icon: const Icon(Icons.keyboard_arrow_down_rounded, color: AllAppColors.labelHint),
+              icon: const Icon(Icons.keyboard_arrow_down_rounded, color: AllAppColors.hint),
               style: theme.dropdownMenuTheme.textStyle,
               decoration: InputDecoration(
                 hintText: appLocalizations.originCountryDropdownHint,
