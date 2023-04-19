@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 /// The corresponding color shade for each defined color has been documented.
 class AllAppColors {
   /// Label/Light/300
-  static const Color labelText = Color(0xFF36383A);
+  static const Color label = Color(0xFF36383A);
 
   /// Label/Light/200
-  static const Color labelHint = Color(0xFF8A8A8E);
+  static const Color hint = Color(0xFF8A8A8E);
 
   /// Primary/Light/300
   static const Color primary = Color(0xFF6A39F1);

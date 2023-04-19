@@ -15,7 +15,7 @@ ThemeData mainTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   colorSchemeSeed: AllAppColors.primary,
   inputDecorationTheme: inputDecorationTheme,
-  hintColor: AllAppColors.labelHint,
+  hintColor: AllAppColors.hint,
   radioTheme: radioTheme,
   dropdownMenuTheme: dropdownMenuThemeData,
   checkboxTheme: checkBoxThemeData,
