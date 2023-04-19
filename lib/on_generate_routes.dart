@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_exercise/screens/form/form.dart';
+import 'package:flutter_form_exercise/screens/form_response/form_response.dart';
 
 class GenerateRoute {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
@@ -11,7 +12,12 @@ class GenerateRoute {
         );
       }
 
-      // TODO: Add Form Response Page route:
+      case ('/formResponse') : {
+        return MaterialPageRoute(
+          builder: (context) => FormResponse(),
+          settings: settings
+        );
+      }
     }
 
     return null;
