@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_exercise/theme/colors.dart';
 import 'text_theme.dart';
 
-ThemeData mainTheme = ThemeData(
-  brightness: Brightness.light,
+ThemeData mainThemeLight = ThemeData.light().copyWith(
   scaffoldBackgroundColor: Colors.white,
-  colorSchemeSeed: AppColors.primary,
-  fontFamily: 'Inter',
+  colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
   textTheme: textTheme
 );

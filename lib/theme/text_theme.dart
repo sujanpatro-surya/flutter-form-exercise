@@ -49,4 +49,4 @@ final TextTheme textTheme = const TextTheme(
     letterSpacing: 0.3,
     height: 1.33
   )
-).apply(displayColor: AppColors.label, bodyColor: AppColors.label);
+).apply(displayColor: AppColors.label, bodyColor: AppColors.label, fontFamily: 'Inter');
