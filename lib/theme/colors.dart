@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// The names of the colors defined in [AppColors] are not as per the referenced source (Figma design)
 /// The corresponding color shade for each defined color has been documented.
 class AppColors {
-  AppColors._();
+  const AppColors._();
 
   /// Label/Light/300
   static const Color label = Color(0xFF36383A);
