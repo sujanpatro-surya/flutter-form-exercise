@@ -9,26 +9,30 @@ final TextTheme textTheme = const TextTheme(
   bodyLarge: TextStyle(
     fontSize: 16,
     letterSpacing: 0.2,
+    height: 1.75
   ),
 
   /// Body/B2
   bodyMedium: TextStyle(
     fontSize: 14,
-    letterSpacing: 0.22
+    letterSpacing: 0.22,
+    height: 1.71
   ),
 
   /// Button/BT2
   labelLarge: TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 14,
-    letterSpacing: 0.32
+    letterSpacing: 0.32,
+    height: 1.43
   ),
 
   /// Button/BT3
   labelMedium: TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 12,
-    letterSpacing: 0.35
+    letterSpacing: 0.35,
+    height: 1.33
   ),
 
   /// Small/S1
@@ -36,11 +40,13 @@ final TextTheme textTheme = const TextTheme(
     fontWeight: FontWeight.bold,
     fontSize: 16,
     letterSpacing: 0.2,
+    height: 1.75
   ),
 
   /// Caption/C1
   bodySmall: TextStyle(
     fontSize: 12,
     letterSpacing: 0.3,
+    height: 1.33
   )
 ).apply(displayColor: AppColors.label, bodyColor: AppColors.label);
