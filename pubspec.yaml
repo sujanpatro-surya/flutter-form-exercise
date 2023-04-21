@@ -94,4 +94,4 @@ flutter:
   fonts:
     - family: Inter
       fonts:
-        - asset: fonts/Inter_Font_VariableAxes_slant_weight.ttf
+        - asset: fonts/Inter_Font_VariableAxes_Slant_Weight.ttf
