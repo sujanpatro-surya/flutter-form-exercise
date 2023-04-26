@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_exercise/screens/form/common_values.dart';
+import 'package:flutter_form_exercise/screens/form/form_field_values.dart';
 import 'package:flutter_form_exercise/screens/form/sections/build_layout.dart';
 import 'package:flutter_form_exercise/theme/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../app_paddings.dart';
+import '../form_page_utils.dart';
 
 class OriginCountryDropDown extends StatefulWidget {
   const OriginCountryDropDown({Key? key}) : super(key: key);
@@ -30,7 +33,7 @@ class _OriginCountryDropDownState extends State<OriginCountryDropDown> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildFieldQuestion(question: appLocalizations.originCountryQuestion),
+          buildFieldQuestionWithPadding(question: appLocalizations.originCountryQuestion),
           Padding(
             padding: const EdgeInsets.only(top: AppPaddings.small),
             child: DropdownButtonFormField(

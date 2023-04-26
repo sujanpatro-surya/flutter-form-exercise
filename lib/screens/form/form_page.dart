@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_exercise/screens/form/sections/birth_date.dart';
-import 'package:flutter_form_exercise/screens/form/sections/gender.dart';
-import 'package:flutter_form_exercise/screens/form/sections/opinion.dart';
-import 'package:flutter_form_exercise/screens/form/sections/origin_country.dart';
-import 'package:flutter_form_exercise/screens/form/sections/submit.dart';
-import 'package:flutter_form_exercise/screens/form/sections/terms_and_conditions.dart';
-import 'common_values.dart';
+import 'package:flutter_form_exercise/screens/form/sections/birth_date_field.dart';
+import 'package:flutter_form_exercise/screens/form/sections/gender_radio.dart';
+import 'package:flutter_form_exercise/screens/form/sections/opinion_field.dart';
+import 'package:flutter_form_exercise/screens/form/sections/origin_country_dropdown.dart';
+import 'package:flutter_form_exercise/screens/form/sections/submit_button.dart';
+import 'package:flutter_form_exercise/screens/form/sections/terms_and_conditions_checkbox.dart';
+import 'package:flutter_form_exercise/screens/form/form_page_utils.dart';
+import '../app_paddings.dart';
+import 'form_field_values.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_form_exercise/screens/form/sections/name.dart';
+import 'package:flutter_form_exercise/screens/form/sections/name_field.dart';
 
 class FormPage extends StatefulWidget {
   const FormPage({Key? key}) : super(key: key);
@@ -22,7 +24,7 @@ class _FormPageState extends State<FormPage> {
   Widget build(BuildContext context) {
     AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     late final List<Widget> formElementsOrder;
-    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+    if (isScreenPortrait(context)) {
       formElementsOrder = getWidgetListInPortraitOrder();
     }
     else {

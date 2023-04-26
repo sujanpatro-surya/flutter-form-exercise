@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_exercise/screens/form/common_values.dart';
+import 'package:flutter_form_exercise/screens/form/form_field_values.dart';
 import 'package:flutter_form_exercise/screens/form/sections/build_layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../app_paddings.dart';
 
 class TAndCCheckBox extends StatelessWidget {
   const TAndCCheckBox({Key? key, required this.onChanged, required this.onTap}) : super(key: key);

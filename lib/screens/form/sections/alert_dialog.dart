@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_exercise/screens/form/common_values.dart';
 import 'package:flutter_form_exercise/theme/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../app_paddings.dart';
 
 AlertDialog alertDialogBox(BuildContext context) {
   final AppLocalizations appLocalisations = AppLocalizations.of(context)!;

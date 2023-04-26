@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_exercise/screens/form/common_values.dart';
+
+import '../../app_paddings.dart';
+import '../form_page_utils.dart';
 
 LayoutBuilder buildLayout({required Widget child, bool fullWidth=true}) {
   return LayoutBuilder(
     builder: (context, boxConstraints) {
-      Orientation orientation = MediaQuery.of(context).orientation;
-      if (fullWidth || orientation == Orientation.portrait) {
+      if (fullWidth || isScreenPortrait(context)) {
         return SizedBox(width: boxConstraints.maxWidth, child: child);
       }
       else {

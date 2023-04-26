@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_exercise/screens/form/common_values.dart';
+import 'package:flutter_form_exercise/screens/form/form_field_values.dart';
 import 'package:flutter_form_exercise/theme/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../form_page_utils.dart';
 import 'alert_dialog.dart';
 
 class SubmitButton extends StatelessWidget {
@@ -36,11 +37,11 @@ class SubmitButton extends StatelessWidget {
   }
 
   Size getButtonSize(BuildContext context) {
-    if (MediaQuery.of(context).orientation == Orientation.landscape) {
-      return const Size(0, 0);
+    if (isScreenPortrait(context)) {
+      return const Size(double.infinity, 0);
     }
     else {
-      return const Size(double.infinity, 0);
+      return const Size(0, 0);
     }
   }
 

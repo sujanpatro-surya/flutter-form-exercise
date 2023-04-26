@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_exercise/screens/form/sections/build_layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_form_exercise/screens/form/common_values.dart';
+import 'package:flutter_form_exercise/screens/form/form_field_values.dart';
+
+import '../../app_paddings.dart';
+import '../form_page_utils.dart';
 
 class GenderRadio extends StatefulWidget {
   const GenderRadio({Key? key}) : super(key: key);
@@ -23,7 +26,7 @@ class _GenderRadioState extends State<GenderRadio> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildFieldQuestion(question: appLocalizations.genderQuestion),
+          buildFieldQuestionWithPadding(question: appLocalizations.genderQuestion),
           buildGenderRadioTile(theme: theme, genderValue: appLocalizations.male),
           buildGenderRadioTile(theme: theme, genderValue: appLocalizations.female),
           buildGenderRadioTile(theme: theme, genderValue: appLocalizations.otherGender)

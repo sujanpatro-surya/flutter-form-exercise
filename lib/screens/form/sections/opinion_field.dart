@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_form_exercise/screens/form/sections/build_layout.dart';
-import 'package:flutter_form_exercise/screens/form/common_values.dart';
+import 'package:flutter_form_exercise/screens/form/form_field_values.dart';
+
+import '../../app_paddings.dart';
+import '../form_page_utils.dart';
 
 class OpinionField extends StatefulWidget {
   const OpinionField({Key? key}) : super(key: key);
@@ -22,7 +25,7 @@ class _OpinionFieldState extends State<OpinionField> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildFieldQuestion(question: appLocalizations.opinionQuestion),
+          buildFieldQuestionWithPadding(question: appLocalizations.opinionQuestion),
           Padding(
             padding: const EdgeInsets.only(top: AppPaddings.small),
             child: SizedBox(

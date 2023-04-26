@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_exercise/screens/form/sections/build_layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_form_exercise/screens/form/common_values.dart';
+
+import '../../app_paddings.dart';
+import '../form_page_utils.dart';
 
 class NameField extends StatelessWidget {
   const NameField({Key? key, required this.onChanged}) : super(key: key);
@@ -18,7 +20,7 @@ class NameField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildFieldQuestion(question: appLocalizations.nameQuestion),
+          buildFieldQuestionWithPadding(question: appLocalizations.nameQuestion),
           Padding(
             padding: const EdgeInsets.only(top: AppPaddings.small),
             child: TextFormField(
