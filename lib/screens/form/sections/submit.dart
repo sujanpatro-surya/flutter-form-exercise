@@ -48,11 +48,8 @@ class SubmitButton extends StatelessWidget {
     showDialog<bool>(
       context: context,
       builder: (context) => alertDialogBox(context)
-    ).then((action) {
-      if (action!) {
-        // TODO: Navigate to form response page, with form field values as argument
-      }
-    });
+    ).then((action) {});
+
     resetFormState();
   }
 }
