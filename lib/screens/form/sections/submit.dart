@@ -18,8 +18,8 @@ class SubmitButton extends StatelessWidget {
     final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        disabledBackgroundColor: AllAppColors.disabled,
-        disabledForegroundColor: AllAppColors.hint,
+        disabledBackgroundColor: AppColors.disabled,
+        disabledForegroundColor: AppColors.hint,
         padding: const EdgeInsets.symmetric(
           vertical: _buttonTextVerticalPadding,
           horizontal: _buttonTextHorizontalPadding

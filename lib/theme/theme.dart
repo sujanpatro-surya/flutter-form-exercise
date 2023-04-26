@@ -6,15 +6,13 @@ import 'radio_button_theme.dart';
 import 'input_decoration_theme.dart';
 import 'text_theme.dart';
 
-ThemeData mainTheme = ThemeData(
-  fontFamily: 'Inter',
+ThemeData themeLight = ThemeData.light().copyWith(
+  scaffoldBackgroundColor: Colors.white,
+  colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
   textTheme: textTheme,
   appBarTheme: appBarTheme,
-  brightness: Brightness.light,
-  scaffoldBackgroundColor: Colors.white,
-  colorSchemeSeed: AllAppColors.primary,
   inputDecorationTheme: inputDecorationTheme,
-  hintColor: AllAppColors.hint,
+  hintColor: AppColors.hint,
   radioTheme: radioTheme,
   checkboxTheme: checkBoxThemeData,
 );
