@@ -11,7 +11,7 @@ class GenerateRoute {
           settings: settings
         );
       }
-      default: throw RouteNotFoundError();
+      default: throw DeveloperError();
     }
   }
 }

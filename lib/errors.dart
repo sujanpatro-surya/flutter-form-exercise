@@ -1,10 +1,10 @@
-class RouteNotFoundError extends Error {
+class DeveloperError extends Error {
   final String? message;
 
-  RouteNotFoundError({this.message});
+  DeveloperError({this.message});
 
   @override
   String toString() {
-    return 'RouteNotFound{message: ${message ?? 'This Route is not defined'}}';
+    return 'DeveloperError: ${message ?? ''}';
   }
 }
