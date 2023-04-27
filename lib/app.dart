@@ -9,6 +9,7 @@ class FormApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
       theme: themeLight,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
