@@ -26,8 +26,7 @@ class _FormPageState extends State<FormPage> {
     late final List<Widget> formElementsOrder;
     if (isScreenPortrait(context)) {
       formElementsOrder = getWidgetListInPortraitOrder();
-    }
-    else {
+    } else {
       formElementsOrder = getWidgetListInLandscapeOrder();
     }
 
@@ -49,44 +48,44 @@ class _FormPageState extends State<FormPage> {
             alignment: WrapAlignment.center,
             spacing: AppPaddings.xlarge,
             children: formElementsOrder
-          ),
-        ),
-      ),
+          )
+        )
+      )
     );
   }
 
   List<Widget> getWidgetListInPortraitOrder() {
     return [
-      NameField(onChanged: onChangedName),
-      BirthDateField(onChanged: onChangedBirthDate),
-      const GenderRadio(),
-      const OpinionField(),
-      const OriginCountryDropDown(),
-      TAndCCheckBox(onChanged: onChangedTAndC, onTap: onTapTAndC),
+      NameField(onChanged: _onChangedName),
+      BirthDateField(onChanged: _onChangedBirthDate),
+      GenderRadio(onChanged: _onChangedGender),
+      OpinionField(onChanged: _onChangedOpinion),
+      OriginCountryDropDown(onChanged: _onChangedOpinion),
+      TermsAndConditionsCheckBox(onChanged: onChangedTermsAndConditions, onTap: onTapTermsAndConditions),
       SubmitButton(resetFormState: _resetFormState)
     ];
   }
 
   List<Widget> getWidgetListInLandscapeOrder() {
     return [
-      NameField(onChanged: onChangedName),
-      BirthDateField(onChanged: onChangedBirthDate),
-      const GenderRadio(),
-      const OriginCountryDropDown(),
-      const OpinionField(),
-      TAndCCheckBox(onChanged: onChangedTAndC, onTap: onTapTAndC),
+      NameField(onChanged: _onChangedName),
+      BirthDateField(onChanged: _onChangedBirthDate),
+      GenderRadio(onChanged: _onChangedGender),
+      OriginCountryDropDown(onChanged: _onChangedOrigin),
+      OpinionField(onChanged: _onChangedOpinion),
+      TermsAndConditionsCheckBox(onChanged: onChangedTermsAndConditions, onTap: onTapTermsAndConditions),
       SubmitButton(resetFormState: _resetFormState)
     ];
   }
 
-  void onChangedName(String value) {
+  void _onChangedName(String value) {
     setState(() {
       FormFieldValues.name = value;
       updateSubmitButtonStatus();
     });
   }
 
-  void onChangedBirthDate(DateTime? value) {
+  void _onChangedBirthDate(DateTime? value) {
     setState(() {
       FormFieldValues.dateController.text = _convertDateFormatInString(value!);
       FormFieldValues.birthDate = value;
@@ -94,14 +93,32 @@ class _FormPageState extends State<FormPage> {
     });
   }
 
-  void onChangedTAndC(bool? state) {
+  void _onChangedGender(String? gender) {
+    setState(() {
+      FormFieldValues.gender = gender;
+    });
+  }
+
+  void _onChangedOpinion(String? opinion) {
+    setState(() {
+      FormFieldValues.opinion = opinion;
+    });
+  }
+
+  void _onChangedOrigin(String? country) {
+    setState(() {
+      FormFieldValues.originCountry = country;
+    });
+  }
+
+  void onChangedTermsAndConditions(bool? state) {
     return setState(() {
       FormFieldValues.isTermsAndConditionsAccepted = state!;
       updateSubmitButtonStatus();
     });
   }
 
-  void onTapTAndC() {
+  void onTapTermsAndConditions() {
     return setState(() {
       FormFieldValues.isTermsAndConditionsAccepted = !FormFieldValues.isTermsAndConditionsAccepted;
       updateSubmitButtonStatus();

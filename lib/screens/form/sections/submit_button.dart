@@ -6,8 +6,11 @@ import '../form_page_utils.dart';
 import 'alert_dialog.dart';
 
 class SubmitButton extends StatelessWidget {
-  const SubmitButton({Key? key, required this.resetFormState}) : super(key: key);
-  final ValueGetter<void> resetFormState;
+  const SubmitButton({
+    Key? key,
+    required ValueGetter<void> resetFormState
+  }) : _resetFormState = resetFormState, super(key: key);
+  final ValueGetter<void> _resetFormState;
 
   static const double _buttonElevation = 0;
   static const double _buttonBorderRadius = 10;
@@ -51,6 +54,6 @@ class SubmitButton extends StatelessWidget {
       builder: (context) => alertDialogBox(context)
     ).then((action) {});
 
-    resetFormState();
+    _resetFormState();
   }
 }

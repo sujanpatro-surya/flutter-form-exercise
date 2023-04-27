@@ -6,16 +6,16 @@ import 'package:flutter_form_exercise/screens/form/form_field_values.dart';
 import '../../app_paddings.dart';
 import '../form_page_utils.dart';
 
-class GenderRadio extends StatefulWidget {
-  const GenderRadio({Key? key}) : super(key: key);
+class GenderRadio extends StatelessWidget {
+  const GenderRadio({
+    Key? key,
+    required ValueSetter<String?> onChanged
+  }) : _onChanged = onChanged, super(key: key);
+  final ValueSetter<String?> _onChanged;
+
   static const double _radioButtonSize = 24;
   static const double _radioTileTextSize = 78;
 
-  @override
-  State<GenderRadio> createState() => _GenderRadioState();
-}
-
-class _GenderRadioState extends State<GenderRadio> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
@@ -27,50 +27,48 @@ class _GenderRadioState extends State<GenderRadio> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           buildFieldQuestionWithPadding(question: appLocalizations.genderQuestion),
-          buildGenderRadioTile(theme: theme, genderValue: appLocalizations.male),
-          buildGenderRadioTile(theme: theme, genderValue: appLocalizations.female),
-          buildGenderRadioTile(theme: theme, genderValue: appLocalizations.otherGender)
+          _buildGenderRadioTile(theme: theme, genderValue: appLocalizations.male, onChanged: _onChanged),
+          _buildGenderRadioTile(theme: theme, genderValue: appLocalizations.female, onChanged: _onChanged),
+          _buildGenderRadioTile(theme: theme, genderValue: appLocalizations.otherGender, onChanged: _onChanged)
         ],
       )
     );
   }
+}
 
-  Padding buildGenderRadioTile({required ThemeData theme, required String genderValue}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: AppPaddings.small),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          buildRadioButton(genderValue),
-          InkWell(
-            onTap: () => onChanged(genderValue),
-            child: SizedBox(
-              width: GenderRadio._radioTileTextSize,
-              child: Padding(
-                padding: const EdgeInsets.only(left: AppPaddings.medium),
-                child: Text(genderValue, style: theme.textTheme.bodyMedium),
-              ),
+Padding _buildGenderRadioTile({required ThemeData theme, required String genderValue, required ValueSetter<String?> onChanged}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: AppPaddings.small),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        _buildRadioButton(genderValue, onChanged),
+        InkWell(
+          onTap: () => onChanged(genderValue),
+          child: SizedBox(
+            width: GenderRadio._radioTileTextSize,
+            child: Padding(
+              padding: const EdgeInsets.only(left: AppPaddings.medium),
+              child: Text(genderValue, style: theme.textTheme.bodyMedium),
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  SizedBox buildRadioButton(String genderValue) {
-    return SizedBox(
-      height: GenderRadio._radioButtonSize,
-      width: GenderRadio._radioButtonSize,
-      child: Padding(
-        padding: const EdgeInsets.all(AppPaddings.xsmall),
-        child: Radio<String>(
-          value: genderValue,
-          groupValue: FormFieldValues.gender,
-          onChanged: onChanged
         ),
-      ),
-    );
-  }
+      ],
+    ),
+  );
+}
 
-  void onChanged(String? gender) => setState(() => FormFieldValues.gender = gender);
+SizedBox _buildRadioButton(String genderValue, ValueSetter<String?> onChanged) {
+  return SizedBox(
+    height: GenderRadio._radioButtonSize,
+    width: GenderRadio._radioButtonSize,
+    child: Padding(
+      padding: const EdgeInsets.all(AppPaddings.xsmall),
+      child: Radio<String>(
+        value: genderValue,
+        groupValue: FormFieldValues.gender,
+        onChanged: onChanged
+      ),
+    ),
+  );
 }

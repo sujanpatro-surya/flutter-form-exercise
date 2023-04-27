@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_form_exercise/screens/form/sections/build_layout.dart';
-import 'package:flutter_form_exercise/screens/form/form_field_values.dart';
 
 import '../../app_paddings.dart';
 import '../form_page_utils.dart';
 
-class OpinionField extends StatefulWidget {
-  const OpinionField({Key? key}) : super(key: key);
+class OpinionField extends StatelessWidget {
+  const OpinionField({
+    Key? key,
+    required ValueSetter<String?> onChanged
+  }) : _onChanged = onChanged, super(key: key);
+  final ValueSetter<String?> _onChanged;
+  
   static const double _opinionTextBoxHeight = 100;
   static const int _opinionTextBoxMaxLines = 5;
 
-  @override
-  State<OpinionField> createState() => _OpinionFieldState();
-}
-
-class _OpinionFieldState extends State<OpinionField> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
@@ -29,18 +28,15 @@ class _OpinionFieldState extends State<OpinionField> {
           Padding(
             padding: const EdgeInsets.only(top: AppPaddings.small),
             child: SizedBox(
-              height: OpinionField._opinionTextBoxHeight,
+              height: _opinionTextBoxHeight,
               child: TextFormField(
+                textCapitalization: TextCapitalization.sentences,
                 style: theme.textTheme.bodyMedium,
-                maxLines: OpinionField._opinionTextBoxMaxLines,
+                maxLines: _opinionTextBoxMaxLines,
                 decoration: InputDecoration(
                   hintText: appLocalizations.opinionFieldHint
                 ).applyDefaults(theme.inputDecorationTheme),
-                onChanged: (value) {
-                  setState(() {
-                    FormFieldValues.opinion = value;
-                  });
-                }
+                onChanged: _onChanged
               ),
             ),
           ),

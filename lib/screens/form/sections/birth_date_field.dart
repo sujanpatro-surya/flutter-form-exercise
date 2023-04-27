@@ -7,8 +7,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../app_paddings.dart';
 
 class BirthDateField extends StatefulWidget {
-  const BirthDateField({Key? key, required this.onChanged}) : super(key: key);
-  final ValueSetter<DateTime?> onChanged;
+  const BirthDateField({
+    Key? key,
+    required ValueSetter<DateTime?> onChanged
+  }) : _onChanged = onChanged, super(key: key);
+  final ValueSetter<DateTime?> _onChanged;
 
   static const int _firstBirthYearSupported = 1900;
 
@@ -47,6 +50,7 @@ class _BirthDateFieldState extends State<BirthDateField> {
             child: TextFormField(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: FormFieldValues.dateController,
+              keyboardType: TextInputType.none,
               readOnly: true,
               style: textTheme.bodyMedium,
               validator: (date) {
@@ -64,10 +68,10 @@ class _BirthDateFieldState extends State<BirthDateField> {
                 initialDate: FormFieldValues.birthDate ?? DateTime.now(),
                 firstDate: DateTime(BirthDateField._firstBirthYearSupported),
                 lastDate: DateTime.now()
-              ).then(widget.onChanged),
+              ).then(widget._onChanged),
             )
-          ),
-        ],
+          )
+        ]
       )
     );
   }

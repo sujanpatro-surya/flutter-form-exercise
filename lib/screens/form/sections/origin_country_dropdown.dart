@@ -7,15 +7,15 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../app_paddings.dart';
 import '../form_page_utils.dart';
 
-class OriginCountryDropDown extends StatefulWidget {
-  const OriginCountryDropDown({Key? key}) : super(key: key);
+class OriginCountryDropDown extends StatelessWidget {
+  const OriginCountryDropDown({
+    Key? key,
+    required ValueSetter<String?> onChanged
+  }) : _onChanged = onChanged, super(key: key);
+  final ValueSetter<String?> _onChanged;
+  
   static late List<String> _dropDownCountryItems;
 
-  @override
-  State<OriginCountryDropDown> createState() => _OriginCountryDropDownState();
-}
-
-class _OriginCountryDropDownState extends State<OriginCountryDropDown> {
   @override
   Widget build(BuildContext context) {
     AppLocalizations appLocalizations = AppLocalizations.of(context)!;
@@ -43,20 +43,16 @@ class _OriginCountryDropDownState extends State<OriginCountryDropDown> {
                 hintText: appLocalizations.originCountryDropdownHint,
               ).applyDefaults(theme.inputDecorationTheme),
               value: FormFieldValues.originCountry,
-              items: OriginCountryDropDown._dropDownCountryItems.map(
+              items: _dropDownCountryItems.map(
                 (country) => DropdownMenuItem(
                   value: country,
                   child: Text(country),
                 )
               ).toList(),
-              onChanged: (country) {
-                setState(() {
-                  FormFieldValues.originCountry = country;
-                });
-              },
+              onChanged: _onChanged,
             )
-          ),
-        ],
+          )
+        ]
       )
     );
   }

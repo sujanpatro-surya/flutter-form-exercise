@@ -6,8 +6,11 @@ import '../../app_paddings.dart';
 import '../form_page_utils.dart';
 
 class NameField extends StatelessWidget {
-  const NameField({Key? key, required this.onChanged}) : super(key: key);
-  final ValueSetter<String> onChanged;
+  const NameField({
+    Key? key,
+    required ValueSetter<String> onChanged
+  }) : _onChanged = onChanged, super(key: key);
+  final ValueSetter<String> _onChanged;
 
   static const int _minimumNameLength = 3;
 
@@ -25,6 +28,7 @@ class NameField extends StatelessWidget {
             padding: const EdgeInsets.only(top: AppPaddings.small),
             child: TextFormField(
               autovalidateMode: AutovalidateMode.onUserInteraction,
+              textCapitalization: TextCapitalization.words,
               style: theme.textTheme.bodyMedium,
               decoration: InputDecoration(
                 hintText: appLocalizations.nameFieldHint,
@@ -35,7 +39,7 @@ class NameField extends StatelessWidget {
                 }
                 return null;
               },
-              onChanged: onChanged,
+              onChanged: _onChanged,
             ),
           ),
         ],

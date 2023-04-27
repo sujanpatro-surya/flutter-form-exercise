@@ -5,10 +5,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../app_paddings.dart';
 
-class TAndCCheckBox extends StatelessWidget {
-  const TAndCCheckBox({Key? key, required this.onChanged, required this.onTap}) : super(key: key);
-  final ValueGetter<void> onTap;
-  final ValueSetter<bool?> onChanged;
+class TermsAndConditionsCheckBox extends StatelessWidget {
+  const TermsAndConditionsCheckBox({
+    Key? key,
+    required ValueSetter<bool?> onChanged,
+    required ValueGetter<void> onTap
+  }) : _onChanged = onChanged, _onTap = onTap, super(key: key);
+  final ValueGetter<void> _onTap;
+  final ValueSetter<bool?> _onChanged;
   
   static const double _checkboxSize = 24;
   static const double _checkboxPadding = 3;
@@ -27,12 +31,12 @@ class TAndCCheckBox extends StatelessWidget {
               padding: const EdgeInsets.all(_checkboxPadding),
               child: Checkbox(
                 value: FormFieldValues.isTermsAndConditionsAccepted,
-                onChanged: onChanged
+                onChanged: _onChanged
               ),
             ),
           ),
           InkWell(
-            onTap: onTap,
+            onTap: _onTap,
             child: Padding(
               padding: const EdgeInsets.only(left: AppPaddings.medium),
               child: Text(appLocalizations.termsAndConditionsText, style: theme.textTheme.bodyMedium),
