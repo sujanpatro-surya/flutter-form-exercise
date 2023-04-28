@@ -14,5 +14,5 @@ ThemeData themeLight = ThemeData.light().copyWith(
   inputDecorationTheme: inputDecorationTheme,
   hintColor: AppColors.hint,
   radioTheme: radioTheme,
-  checkboxTheme: checkBoxThemeData,
+  checkboxTheme: checkBoxTheme,
 );
