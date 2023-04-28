@@ -25,9 +25,9 @@ class _FormPageState extends State<FormPage> {
     AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     late final List<Widget> formElementsOrder;
     if (isScreenPortrait(context)) {
-      formElementsOrder = getWidgetListInPortraitOrder();
+      formElementsOrder = _buildFormWidgetsInPortraitOrder();
     } else {
-      formElementsOrder = getWidgetListInLandscapeOrder();
+      formElementsOrder = _buildFormWidgetsInLandscapeOrder();
     }
 
     return Scaffold(
@@ -54,26 +54,26 @@ class _FormPageState extends State<FormPage> {
     );
   }
 
-  List<Widget> getWidgetListInPortraitOrder() {
+  List<Widget> _buildFormWidgetsInPortraitOrder() {
     return [
       NameField(onChanged: _onChangedName),
       BirthDateField(onChanged: _onChangedBirthDate),
       GenderRadio(onChanged: _onChangedGender),
       OpinionField(onChanged: _onChangedOpinion),
       OriginCountryDropDown(onChanged: _onChangedOpinion),
-      TermsAndConditionsCheckBox(onChanged: onChangedTermsAndConditions, onTap: onTapTermsAndConditions),
+      TermsAndConditionsCheckBox(onChanged: _onChangedTermsAndConditions, onTap: _onTapTermsAndConditions),
       SubmitButton(resetFormState: _resetFormState)
     ];
   }
 
-  List<Widget> getWidgetListInLandscapeOrder() {
+  List<Widget> _buildFormWidgetsInLandscapeOrder() {
     return [
       NameField(onChanged: _onChangedName),
       BirthDateField(onChanged: _onChangedBirthDate),
       GenderRadio(onChanged: _onChangedGender),
       OriginCountryDropDown(onChanged: _onChangedOrigin),
       OpinionField(onChanged: _onChangedOpinion),
-      TermsAndConditionsCheckBox(onChanged: onChangedTermsAndConditions, onTap: onTapTermsAndConditions),
+      TermsAndConditionsCheckBox(onChanged: _onChangedTermsAndConditions, onTap: _onTapTermsAndConditions),
       SubmitButton(resetFormState: _resetFormState)
     ];
   }
@@ -111,14 +111,14 @@ class _FormPageState extends State<FormPage> {
     });
   }
 
-  void onChangedTermsAndConditions(bool? state) {
+  void _onChangedTermsAndConditions(bool? state) {
     return setState(() {
       FormFieldValues.isTermsAndConditionsAccepted = state!;
       updateSubmitButtonStatus();
     });
   }
 
-  void onTapTermsAndConditions() {
+  void _onTapTermsAndConditions() {
     return setState(() {
       FormFieldValues.isTermsAndConditionsAccepted = !FormFieldValues.isTermsAndConditionsAccepted;
       updateSubmitButtonStatus();

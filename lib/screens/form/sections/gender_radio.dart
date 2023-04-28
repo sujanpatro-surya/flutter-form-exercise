@@ -27,22 +27,22 @@ class GenderRadio extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           buildFieldQuestionWithPadding(question: appLocalizations.genderQuestion),
-          _buildGenderRadioTile(theme: theme, genderValue: appLocalizations.male, onChanged: _onChanged),
-          _buildGenderRadioTile(theme: theme, genderValue: appLocalizations.female, onChanged: _onChanged),
-          _buildGenderRadioTile(theme: theme, genderValue: appLocalizations.otherGender, onChanged: _onChanged)
+          _buildGenderRadioTileWithPadding(theme: theme, genderValue: appLocalizations.male, onChanged: _onChanged),
+          _buildGenderRadioTileWithPadding(theme: theme, genderValue: appLocalizations.female, onChanged: _onChanged),
+          _buildGenderRadioTileWithPadding(theme: theme, genderValue: appLocalizations.otherGender, onChanged: _onChanged)
         ],
       )
     );
   }
 }
 
-Padding _buildGenderRadioTile({required ThemeData theme, required String genderValue, required ValueSetter<String?> onChanged}) {
+Padding _buildGenderRadioTileWithPadding({required ThemeData theme, required String genderValue, required ValueSetter<String?> onChanged}) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: AppPaddings.small),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        _buildRadioButton(genderValue, onChanged),
+        _buildGenderRadioButtonSizedBox(genderValue, onChanged),
         InkWell(
           onTap: () => onChanged(genderValue),
           child: SizedBox(
@@ -58,7 +58,7 @@ Padding _buildGenderRadioTile({required ThemeData theme, required String genderV
   );
 }
 
-SizedBox _buildRadioButton(String genderValue, ValueSetter<String?> onChanged) {
+SizedBox _buildGenderRadioButtonSizedBox(String genderValue, ValueSetter<String?> onChanged) {
   return SizedBox(
     height: GenderRadio._radioButtonSize,
     width: GenderRadio._radioButtonSize,

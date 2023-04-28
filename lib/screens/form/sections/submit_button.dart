@@ -42,8 +42,7 @@ class SubmitButton extends StatelessWidget {
   Size getButtonSize(BuildContext context) {
     if (isScreenPortrait(context)) {
       return const Size(double.infinity, 0);
-    }
-    else {
+    } else {
       return const Size(0, 0);
     }
   }
