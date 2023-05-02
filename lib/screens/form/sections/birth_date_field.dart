@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_exercise/screens/form/form_field_values.dart';
-import 'package:flutter_form_exercise/screens/form/sections/build_layout.dart';
+import 'package:flutter_form_exercise/screens/form/sections/build_responsive_layout.dart';
 import 'package:flutter_form_exercise/theme/text_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -36,7 +36,7 @@ class _BirthDateFieldState extends State<BirthDateField> {
   Widget build(BuildContext context) {
     AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     final ThemeData theme = Theme.of(context);
-    return buildLayout(
+    return buildResponsiveLayoutWithDynamicWidth(
       fullWidth: false,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

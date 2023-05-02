@@ -10,12 +10,6 @@ class SubmitButton extends StatelessWidget {
     Key? key,
     required ValueGetter<void> resetFormState
   }) : _resetFormState = resetFormState, super(key: key);
-  final ValueGetter<void> _resetFormState;
-
-  static const double _buttonElevation = 0;
-  static const double _buttonBorderRadius = 10;
-  static const double _buttonTextVerticalPadding = 10;
-  static const double _buttonTextHorizontalPadding = 35.5;
   
   @override
   Widget build(BuildContext context) {
@@ -32,19 +26,11 @@ class SubmitButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(_buttonBorderRadius)
         ),
-        minimumSize: getButtonSize(context)
+        minimumSize: _getButtonSize(context)
       ),
       onPressed: FormFieldValues.isSubmitAllowed ? () => _submitForm(context) : null,
       child: Text(appLocalizations.submitButtonText)
     );
-  }
-
-  Size getButtonSize(BuildContext context) {
-    if (isScreenPortrait(context)) {
-      return const Size(double.infinity, 0);
-    } else {
-      return const Size(0, 0);
-    }
   }
 
   void _submitForm(BuildContext context) {
@@ -54,5 +40,19 @@ class SubmitButton extends StatelessWidget {
     ).then((action) {});
 
     _resetFormState();
+  }
+
+  final ValueGetter<void> _resetFormState;
+  static const double _buttonElevation = 0;
+  static const double _buttonBorderRadius = 10;
+  static const double _buttonTextVerticalPadding = 10;
+  static const double _buttonTextHorizontalPadding = 35.5;
+}
+
+Size _getButtonSize(BuildContext context) {
+  if (isScreenPortrait(context)) {
+    return const Size(double.infinity, 0);
+  } else {
+    return const Size(0, 0);
   }
 }

@@ -9,6 +9,7 @@ AlertDialog alertDialogBox(BuildContext context) {
   final ThemeData theme = Theme.of(context);
   const double dividerHeight = 0;
   const double buttonPadding = 12;
+
   return AlertDialog(
     backgroundColor: Colors.white,
     insetPadding: const EdgeInsets.symmetric(horizontal: 30),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_exercise/screens/form/sections/build_layout.dart';
+import 'package:flutter_form_exercise/screens/form/sections/build_responsive_layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../app_paddings.dart';
@@ -10,15 +10,12 @@ class NameField extends StatelessWidget {
     Key? key,
     required ValueSetter<String> onChanged
   }) : _onChanged = onChanged, super(key: key);
-  final ValueSetter<String> _onChanged;
-
-  static const int _minimumNameLength = 3;
 
   @override
   Widget build(BuildContext context) {
     final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     final ThemeData theme = Theme.of(context);
-    return buildLayout(
+    return buildResponsiveLayoutWithDynamicWidth(
       fullWidth: false,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,4 +43,7 @@ class NameField extends StatelessWidget {
       )
     );
   }
+
+  final ValueSetter<String> _onChanged;
+  static const int _minimumNameLength = 3;
 }

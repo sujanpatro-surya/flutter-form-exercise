@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_exercise/screens/form/form_field_values.dart';
-import 'package:flutter_form_exercise/screens/form/sections/build_layout.dart';
+import 'package:flutter_form_exercise/screens/form/sections/build_responsive_layout.dart';
 import 'package:flutter_form_exercise/theme/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -12,23 +12,14 @@ class OriginCountryDropDown extends StatelessWidget {
     Key? key,
     required ValueSetter<String?> onChanged
   }) : _onChanged = onChanged, super(key: key);
-  final ValueSetter<String?> _onChanged;
-  
-  static late List<String> _dropDownCountryItems;
 
   @override
   Widget build(BuildContext context) {
     AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     final ThemeData theme = Theme.of(context);
-    OriginCountryDropDown._dropDownCountryItems = [
-      appLocalizations.indiaDropDownItem,
-      appLocalizations.usaDropDownItem,
-      appLocalizations.russiaDropDownItem,
-      appLocalizations.chinaDropDownItem,
-      appLocalizations.japanDropDownItem,
-    ];
+    _setItemList(appLocalizations);
 
-    return buildLayout(
+    return buildResponsiveLayoutWithDynamicWidth(
       fullWidth: false,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +34,7 @@ class OriginCountryDropDown extends StatelessWidget {
                 hintText: appLocalizations.originCountryDropdownHint,
               ).applyDefaults(theme.inputDecorationTheme),
               value: FormFieldValues.originCountry,
-              items: _dropDownCountryItems.map(
+              items: _items.map(
                 (country) => DropdownMenuItem(
                   value: country,
                   child: Text(country),
@@ -56,4 +47,17 @@ class OriginCountryDropDown extends StatelessWidget {
       )
     );
   }
+
+  void _setItemList(AppLocalizations appLocalizations) {
+    OriginCountryDropDown._items = [
+      appLocalizations.indiaDropDownItem,
+      appLocalizations.usaDropDownItem,
+      appLocalizations.russiaDropDownItem,
+      appLocalizations.chinaDropDownItem,
+      appLocalizations.japanDropDownItem
+    ];
+  }
+
+  final ValueSetter<String?> _onChanged;
+  static late List<String> _items;
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../app_paddings.dart';
 import '../form_page_utils.dart';
 
-LayoutBuilder buildLayout({required Widget child, bool fullWidth=true}) {
+LayoutBuilder buildResponsiveLayoutWithDynamicWidth({required Widget child, bool fullWidth=true}) {
   return LayoutBuilder(
     builder: (context, boxConstraints) {
       if (fullWidth || isScreenPortrait(context)) {
